@@ -7,7 +7,7 @@ echo "# Only CentOS7 & RAM>128                                      #"
 echo "# Author: ysun <qkqpttgf@gmail.com>                           #"
 echo "# Github: https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod #"
 echo "###############################################################"
-echo "wget -N https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod/raw/master/LetsEncrypt-auto-dnspod.sh | bash"
+echo "wget -N https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod/raw/master/LetsEncrypt-auto-dnspod.sh"
 
 read -p "Will dry-run for test?(default No): " dr
 if [ "$dr" == "N" ] || [ "$dr" == "No" ] || [ "$dr" == "n" ] || [ "$dr" == "no" ]; then
@@ -76,4 +76,4 @@ ${cmdl}
 
 echo
 [ "${domains[1]:0:2}" == "*." ] && firstdomain=${domains[1]:2:${#domains[1]}} || firstdomain=${domains[1]}
-cat /etc/letsencrypt/renewal/${firstdomain}.conf
+[ ! -s "/etc/letsencrypt/renewal/${firstdomain}.conf" ] && cat /etc/letsencrypt/renewal/${firstdomain}.conf
