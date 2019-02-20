@@ -21,7 +21,7 @@ do
     s=$((n-f));
     [ $s -gt 9100 ] && rm -f $a >>${tname}
     if [ $s -lt 8800 ]; then
-        [ $s -gt 300 ] &&rm -f $a >>${tname} 
+        [ $s -gt 300 ] && rm -f $a >>${tname} 
     fi
 done
 
