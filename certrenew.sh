@@ -19,7 +19,10 @@ do
     n=`date +%Y%m%d`
     #echo $f,$n
     s=$((n-f));
-    [ $s -gt 300 ] && rm -f $a >>${tname}
+    [ $s -gt 9100 ] && rm -f $a >>${tname}
+    if [ $s -lt 8800 ]; then
+        [ $s -gt 300 ] &&rm -f $a >>${tname} 
+    fi
 done
 
 #run renew everyday, certbot will check, if less 30 days then do renew
