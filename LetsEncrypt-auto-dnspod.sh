@@ -9,19 +9,19 @@ echo "# Github: https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod #"
 echo "###############################################################"
 echo "wget -N https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod/raw/master/LetsEncrypt-auto-dnspod.sh"
 
-read -p "Will dry-run for test?(default No): " dr
-if [ "$dr" == "N" ] || [ "$dr" == "No" ] || [ "$dr" == "n" ] || [ "$dr" == "no" ]; then
+read -p "Will dry-run for test?(default No): " dr < /dev/tty
+if [ "$dr" == "N" ] || [ "$dr" == "NO" ] || [ "$dr" == "n" ] || [ "$dr" == "no" ]; then
     dr=""
 fi
-read -p "Please input your email: " useremail
+read -p "Please input your email: " useremail < /dev/tty
 
 echo "Please input your domains one by one(a.com,*.a.com ,I will not check it right or not):"
 n=1
-read -p "Input domain $n: " domains[$n]
+read -p "Input domain $n: " domains[$n] < /dev/tty
 while [ -n "${domains[$n]}" ]
 do
     ((n=${n}+1))
-    read -p "Input domain $n: " domains[$n]
+    read -p "Input domain $n: " domains[$n] < /dev/tty
 done
 #echo ${domains[@]}
 for v in ${domains[@]}; do
@@ -31,7 +31,7 @@ done
 echo "Get your dnspod_token from https://www.dnspod.cn/console/user/security"
 while [ -z "${dnspod_token}" ]
 do
-    read -p "Please input your dnspod_token(Connect with commas','):" dnspod_token
+    read -p "Please input your dnspod_token(Connect with commas','):" dnspod_token < /dev/tty
 done
 
 [ ! -d "/etc/letsencrypt" ] && mkdir /etc/letsencrypt
@@ -63,7 +63,7 @@ echo
 echo ${cmdl}
 echo
 
-read -p "Press ENTER to start...or Press Ctrl+C to cancel" c
+read -p "Press ENTER to start...or Press Ctrl+C to cancel" c < /dev/tty
 
 [ ! -s "$basepath/certbot-auth-dnspod.sh" ] && wget -N https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod/raw/master/certbot-auth-dnspod.sh
 [ ! -s "$basepath/certbot-cleanup-dnspod.sh" ] && wget -N https://github.com/qkqpttgf/LetsEncrypt-auto-dnspod/raw/master/certbot-cleanup-dnspod.sh
